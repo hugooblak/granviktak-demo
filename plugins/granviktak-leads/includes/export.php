@@ -23,7 +23,7 @@ add_action(
 	'admin_post_npl_export',
 	function () {
 		if ( ! current_user_can( 'export_npl_leads' ) ) {
-			wp_die( esc_html__( 'You are not allowed to export leads.', 'granviktak-leads' ), 403 );
+			wp_die( esc_html__( 'Du har inte behörighet att exportera förfrågningar.', 'granviktak-leads' ), 403 );
 		}
 		check_admin_referer( 'npl_export' );
 

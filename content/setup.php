@@ -215,7 +215,7 @@ HTML;
 $privacy = nps_page( 'integritetspolicy', 'Integritetspolicy', $privacy_content, 'Så använder Granvik Tak uppgifterna du skickar med offertformuläret.' );
 update_option( 'wp_page_for_privacy_policy', $privacy );
 
-$guides = nps_page( 'takguider', 'Roofing guides', '', 'Plain answers to the questions homeowners ask about roofs.' );
+$guides = nps_page( 'takguider', 'Takguider', '', 'Raka svar på det villaägare brukar undra över taket.' );
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home );

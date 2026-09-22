@@ -202,11 +202,11 @@ function npm_convert_file( $file ) {
 			if ( $had_border ) {
 				$why[] = 'old border/cellpadding attributes removed';
 			}
-			$notes[] = 'Table rebuilt with a proper header row' . ( $why ? ' (' . implode( '; ', $why ) . ')' : '' ) . '. Check the first row really is a header.';
+			$notes[] = 'Tabellen ombyggd med riktig rubrikrad' . ( $why ? ' (' . implode( '; ', $why ) . ')' : '' ) . '. Check the first row really is a header.';
 		}
 	}
 
-	$notes[] = 'Removed all inline styles, font tags and wrapper divs. The theme styles the content.';
+	$notes[] = 'Tog bort inline-stilar, font-taggar och wrapper-divar. Temat sköter formgivningen.';
 
 	return array(
 		'title'   => $title,

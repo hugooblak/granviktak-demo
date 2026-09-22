@@ -69,7 +69,7 @@ function npl_validate( $in ) {
 	$errors  = array();
 
 	if ( 5 !== strlen( $v['zip'] ) ) {
-		$errors['zip'] = __( 'Enter your 5-digit Postnummer.', 'granviktak-leads' );
+		$errors['zip'] = __( 'Skriv ditt postnummer, till exempel 123 45.', 'granviktak-leads' );
 	}
 	if ( ! isset( $choices['service'][ $v['service'] ] ) ) {
 		$errors['service'] = __( 'Välj vad du behöver hjälp med.', 'granviktak-leads' );

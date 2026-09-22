@@ -16,7 +16,7 @@
 
 	/* ---------- Messages ---------- */
 	var MSG = {
-		zip: 'Enter your 5-digit Postnummer.',
+		zip: 'Skriv ditt postnummer, till exempel 123 45.',
 		service: 'Välj vad du behöver hjälp med.',
 		timeline: 'Välj när du vill ha jobbet gjort.',
 		name: 'Skriv ditt förnamn.',

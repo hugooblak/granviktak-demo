@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Leads that belong to an email address.
  *
- * @param string $email Email address.
+ * @param string $email E-post address.
  * @return WP_Post[]
  */
 function npl_leads_by_email( $email ) {

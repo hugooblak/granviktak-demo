@@ -1,5 +1,5 @@
 /**
- * Editor side of the Quote form block. No build step: plain JavaScript using WordPress's globals.
+ * Editor side of the Offertformulär block. No build step: plain JavaScript using WordPress's globals.
  * The preview is rendered by the same PHP as the live site, so what you see is what visitors get.
  */
 ( function ( wp ) {
@@ -24,19 +24,19 @@
 					null,
 					el(
 						PanelBody,
-						{ title: __( 'Form settings', 'granviktak-leads' ) },
+						{ title: __( 'Formulärinställningar', 'granviktak-leads' ) },
 						el( SelectControl, {
-							label: __( 'Form type', 'granviktak-leads' ),
+							label: __( 'Formulärtyp', 'granviktak-leads' ),
 							value: a.variant,
 							options: [
-								{ label: __( 'Start (ZIP code only, for heroes and page ends)', 'granviktak-leads' ), value: 'start' },
-								{ label: __( 'Full (all 4 steps, for the quote page)', 'granviktak-leads' ), value: 'full' },
+								{ label: __( 'Start (Postnummer only, for heroes and page ends)', 'granviktak-leads' ), value: 'start' },
+								{ label: __( 'Fullt (alla fyra steg, för offertsidan)', 'granviktak-leads' ), value: 'full' },
 							],
 							onChange: function ( v ) { props.setAttributes( { variant: v } ); },
 						} ),
 						a.variant === 'start' && el( TextControl, {
-							label: __( 'Button text', 'granviktak-leads' ),
-							help: __( 'Leave empty for "Start my free quote".', 'granviktak-leads' ),
+							label: __( 'Knapptext', 'granviktak-leads' ),
+							help: __( 'Leave empty for "Räkna på mitt tak".', 'granviktak-leads' ),
 							value: a.buttonText,
 							onChange: function ( v ) { props.setAttributes( { buttonText: v } ); },
 						} ),

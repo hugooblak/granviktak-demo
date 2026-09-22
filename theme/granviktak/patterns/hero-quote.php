@@ -8,11 +8,11 @@
  */
 $img = get_theme_file_uri( 'assets/img/' );
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( $img . 'hero-placeholder.svg' ); ?>","dimRatio":40,"overlayColor":"ink","isUserOverlayColor":true,"minHeight":88,"minHeightUnit":"vh","align":"full","className":"gt-sec-hero","layout":{"type":"constrained","contentSize":"1180px"}} -->
-<div class="wp-block-cover alignfull gt-sec-hero" style="min-height:88vh"><span aria-hidden="true" class="wp-block-cover__background has-ink-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="Platshållare: byt mot en bild på ett tak företaget lagt" src="<?php echo esc_url( $img . 'hero-placeholder.svg' ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"bottom","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60"}}}} -->
+<!-- wp:cover {"url":"<?php echo esc_url( gt_lead_img( gt_lead( 'bild_hero' ) ) ); ?>","dimRatio":40,"overlayColor":"ink","isUserOverlayColor":true,"minHeight":88,"minHeightUnit":"vh","align":"full","className":"gt-sec-hero","layout":{"type":"constrained","contentSize":"1180px"}} -->
+<div class="wp-block-cover alignfull gt-sec-hero" style="min-height:88vh"><span aria-hidden="true" class="wp-block-cover__background has-ink-background-color has-background-dim-40 has-background-dim"></span><img class="wp-block-cover__image-background" alt="Platshållare: byt mot en bild på ett tak företaget lagt" src="<?php echo esc_url( gt_lead_img( gt_lead( 'bild_hero' ) ) ); ?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"bottom","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|60"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-bottom"><!-- wp:column {"verticalAlignment":"bottom","width":"58%"} -->
 <div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:58%"><!-- wp:paragraph {"className":"is-style-eyebrow","textColor":"sand"} -->
-<p class="is-style-eyebrow has-sand-color has-text-color">Takläggare i Stockholm, Nacka, Täby &amp; Huddinge</p>
+<p class="is-style-eyebrow has-sand-color has-text-color">Takläggare i <?php echo esc_html( implode( ', ', array_slice( (array) gt_lead( 'orter', array() ), 0, 4 ) ) ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"textColor":"base","fontSize":"display"} -->
@@ -25,7 +25,7 @@ $img = get_theme_file_uri( 'assets/img/' );
 
 <!-- wp:buttons {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"accent","textColor":"base"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="tel:+46701234567">Ring Anders · 070-123 45 67</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><?php echo esc_html( gt_ring_label() ); ?></a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline","textColor":"base"} -->
@@ -35,38 +35,34 @@ $img = get_theme_file_uri( 'assets/img/' );
 
 <!-- wp:group {"className":"gt-hero-stats","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"left"}} -->
 <div class="wp-block-group gt-hero-stats"><!-- wp:paragraph {"textColor":"base"} -->
-<p class="has-base-color has-text-color"><strong>30 år</strong><br><span>i branschen</span></p>
+<p class="has-base-color has-text-color"><strong><?php echo esc_html( gt_lead( 'ar_i_branschen' ) ); ?> år</strong><br><span>i branschen</span></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"base"} -->
-<p class="has-base-color has-text-color"><strong>4 000+</strong><br><span>lagda tak</span></p>
+<p class="has-base-color has-text-color"><strong><?php echo esc_html( gt_lead( 'antal_tak' ) ); ?></strong><br><span>lagda tak</span></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"base"} -->
-<p class="has-base-color has-text-color"><strong>4,9</strong><br><span>på Google</span></p>
+<p class="has-base-color has-text-color"><strong><?php echo esc_html( gt_lead( 'betyg' ) ); ?></strong><br><span>på Google</span></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"bottom","width":"42%"} -->
 <div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:42%"><!-- wp:group {"className":"is-style-card gt-lift","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"default"}} -->
-<div class="wp-block-group is-style-card gt-lift" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"className":"gt-stars","fontSize":"small"} -->
-<p class="gt-stars has-small-font-size"><strong>4,9 av 5</strong> · 158 omdömen på Google <span class="gt-sample">(platshållare)</span></p>
+<div class="wp-block-group is-style-card gt-lift" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:group {"className":"gt-proof","layout":{"type":"default"}} -->
+<div class="wp-block-group gt-proof"><!-- wp:paragraph {"className":"gt-proof-score"} -->
+<p class="gt-proof-score"><strong><?php echo esc_html( gt_lead( 'betyg' ) ); ?></strong> <span class="gt-stars"></span></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:quote {"className":"gt-hero-review"} -->
-<blockquote class="wp-block-quote gt-hero-review"><!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size">”De la om hela taket på två dagar, städade efter sig och slutnotan var precis den som stod i offerten.”</p>
-<!-- /wp:paragraph --><cite>Platshållare · omdöme hämtas från företagets Google-profil</cite></blockquote>
-<!-- /wp:quote -->
+<!-- wp:paragraph {"className":"gt-proof-count","fontSize":"small"} -->
+<p class="gt-proof-count"><?php echo esc_html( gt_lead( 'omdomen' ) ); ?> omdömen på Google</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
 <!-- wp:heading {"fontSize":"x-large"} -->
 <h2 class="wp-block-heading has-x-large-font-size">Få pris på ditt tak</h2>
 <!-- /wp:heading -->
-
-<!-- wp:paragraph {"textColor":"ink-soft","fontSize":"small"} -->
-<p class="has-ink-soft-color has-text-color has-small-font-size">Fyra frågor, ungefär 30 sekunder. Du binder dig inte vid något.</p>
-<!-- /wp:paragraph -->
 
 <!-- wp:granviktak/lead-form {"variant":"start"} /--></div>
 <!-- /wp:group --></div>

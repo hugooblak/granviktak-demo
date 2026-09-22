@@ -6,10 +6,9 @@
  * Description: Länkar till en sida per kommun. Det här är den lokala sökmotordelen — en sida per ort, inte en lista på en sida.
  */
 $url = function ( $path ) { return esc_url( home_url( $path ) ); };
-$orter = array(
-	'Sollentuna', 'Järfälla', 'Täby', 'Nacka', 'Huddinge', 'Solna',
-	'Danderyd', 'Sundbyberg', 'Lidingö', 'Upplands Väsby', 'Vallentuna', 'Österåker',
-);
+$orter = (array) gt_lead( 'orter', array() );
+// One or two towns make a thin, sad-looking row - skip the section entirely.
+if ( count( $orter ) < 3 ) { return; }
 ?>
 <!-- wp:group {"align":"full","className":"gt-sec-orter","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"ink","layout":{"type":"constrained","contentSize":"1180px"}} -->
 <div class="wp-block-group alignfull gt-sec-orter has-ink-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","verticalAlignment":"top"} -->

@@ -11,8 +11,6 @@
 
 <!-- wp:pattern {"slug":"granviktak/hero-quote"} /-->
 
-<!-- wp:pattern {"slug":"granviktak/trust-strip"} /-->
-
 <!-- wp:pattern {"slug":"granviktak/services"} /-->
 
 <!-- wp:pattern {"slug":"granviktak/orter"} /-->

@@ -10,7 +10,7 @@
  * timestamp (bots submit instantly), and a per-visitor limit.
  *
  * Nothing is ever thrown away: anything that looks like a bot is saved with the status
- * "Suspected spam", with no email alert and no conversion event. If a real person trips
+ * "Misstänkt spam", with no email alert and no conversion event. If a real person trips
  * a check, the lead is still in the inbox.
  *
  * @package Granvik TakLeads
@@ -69,28 +69,28 @@ function npl_validate( $in ) {
 	$errors  = array();
 
 	if ( 5 !== strlen( $v['zip'] ) ) {
-		$errors['zip'] = __( 'Enter your 5-digit ZIP code.', 'granviktak-leads' );
+		$errors['zip'] = __( 'Enter your 5-digit Postnummer.', 'granviktak-leads' );
 	}
 	if ( ! isset( $choices['service'][ $v['service'] ] ) ) {
-		$errors['service'] = __( 'Choose what you need help with.', 'granviktak-leads' );
+		$errors['service'] = __( 'Välj vad du behöver hjälp med.', 'granviktak-leads' );
 	}
 	if ( ! isset( $choices['timeline'][ $v['timeline'] ] ) ) {
-		$errors['timeline'] = __( 'Choose when you would like the work done.', 'granviktak-leads' );
+		$errors['timeline'] = __( 'Välj när du vill ha jobbet gjort.', 'granviktak-leads' );
 	}
 	if ( strlen( $v['name'] ) < 2 ) {
-		$errors['name'] = __( 'Enter your first name.', 'granviktak-leads' );
+		$errors['name'] = __( 'Skriv ditt förnamn.', 'granviktak-leads' );
 	}
 	$digits = preg_replace( '/\D/', '', $v['phone'] );
 	if ( 11 === strlen( $digits ) && '1' === $digits[0] ) {
 		$digits = substr( $digits, 1 );
 	}
 	if ( 10 !== strlen( $digits ) ) {
-		$errors['phone'] = __( 'Enter a 10-digit phone number, like 555 010 0142.', 'granviktak-leads' );
+		$errors['phone'] = __( 'Skriv ditt mobilnummer, till exempel 070-123 45 67.', 'granviktak-leads' );
 	} else {
 		$v['phone'] = sprintf( '(%s) %s-%s', substr( $digits, 0, 3 ), substr( $digits, 3, 3 ), substr( $digits, 6 ) );
 	}
 	if ( ! is_email( $v['email'] ) ) {
-		$errors['email'] = __( 'Enter an email address, like name@example.com.', 'granviktak-leads' );
+		$errors['email'] = __( 'Skriv en e-postadress, till exempel namn@exempel.se.', 'granviktak-leads' );
 	}
 
 	foreach ( npl_tracking_fields() as $key ) {
@@ -144,10 +144,10 @@ function npl_handle_submit() {
 		true
 	);
 	if ( is_wp_error( $lead_id ) ) {
-		wp_die( esc_html__( 'Sorry, something went wrong. Please call us on (555) 010-0142.', 'granviktak-leads' ), 500 );
+		wp_die( esc_html__( 'Något gick fel. Ring oss på 070-123 45 67 så tar vi det direkt.', 'granviktak-leads' ), 500 );
 	}
 
-	// Suspected spam: kept for review, but no alert and no conversion event.
+	// Misstänkt spam: kept for review, but no alert and no conversion event.
 	if ( $suspect ) {
 		wp_safe_redirect( add_query_arg( 'lead', 'ok', npl_thank_you_url() ) );
 		exit;
@@ -156,7 +156,7 @@ function npl_handle_submit() {
 	// 4. Tell the office. Uses WordPress's normal email (add an SMTP plugin on a live site so it isn't marked as spam).
 	$to   = apply_filters( 'npl_notify_email', get_option( 'admin_email' ) );
 	$body = sprintf(
-		"New quote request\n\nName: %s\nPhone: %s\nEmail: %s\nZIP: %s\nNeeds: %s\nWhen: %s\nSource: %s\n\nOpen: %s",
+		"New quote request\n\nName: %s\nPhone: %s\nE-post: %s\nZIP: %s\nNeeds: %s\nWhen: %s\nSource: %s\n\nOpen: %s",
 		$values['name'],
 		$values['phone'],
 		$values['email'],
@@ -166,7 +166,7 @@ function npl_handle_submit() {
 		npl_source_summary( $lead_id ),
 		admin_url( 'post.php?post=' . $lead_id . '&action=edit' )
 	);
-	wp_mail( $to, sprintf( 'New lead: %s (%s)', $values['name'], $values['zip'] ), $body, array( 'Reply-To: ' . $values['email'] ) );
+	wp_mail( $to, sprintf( 'Ny förfrågan: %s (%s)', $values['name'], $values['zip'] ), $body, array( 'Reply-To: ' . $values['email'] ) );
 
 	do_action( 'npl_lead_saved', $lead_id, $values ); // Hook for a CRM, Zapier or Slack integration.
 

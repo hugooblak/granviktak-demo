@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "granviktak/lead-form",
-	"title": "Quote form",
+	"title": "Offertformulär",
 	"category": "widgets",
 	"icon": "feedback",
 	"description": "Multi-step quote form. 'Start' shows only the ZIP question and hands over to the full form. 'Full' shows all four steps.",

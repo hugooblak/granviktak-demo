@@ -11,6 +11,12 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * The subject company's details (name, phone, town, rating, reviews, photos).
+ * Patterns read these through gt_lead() so one demo can be rebuilt for any firm.
+ */
+require_once __DIR__ . '/inc/lead.php';
+
+/**
  * Load style.css (the few rules theme.json can't express) on the front end and in the editor.
  */
 add_action(

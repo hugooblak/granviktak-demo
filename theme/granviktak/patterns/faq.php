@@ -22,7 +22,7 @@ $faqs = array(
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"ink-soft"} -->
-<p class="has-ink-soft-color has-text-color">Hittar du inte svaret? Ring Anders på <a href="tel:+46701234567">070-123 45 67</a>.</p>
+<p class="has-ink-soft-color has-text-color">Hittar du inte svaret? Ring oss på <a href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><?php echo esc_html( gt_lead( 'telefon' ) ); ?></a>.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 

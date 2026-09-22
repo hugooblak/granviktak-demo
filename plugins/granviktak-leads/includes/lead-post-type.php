@@ -16,10 +16,10 @@ add_action(
 				'labels'          => array(
 					'name'          => __( 'Leads', 'granviktak-leads' ),
 					'singular_name' => __( 'Lead', 'granviktak-leads' ),
-					'edit_item'     => __( 'Lead details', 'granviktak-leads' ),
+					'edit_item'     => __( 'Förfrågan', 'granviktak-leads' ),
 					'search_items'  => __( 'Search leads', 'granviktak-leads' ),
-					'not_found'     => __( 'No leads yet. Submit the quote form to see one here.', 'granviktak-leads' ),
-					'all_items'     => __( 'All leads', 'granviktak-leads' ),
+					'not_found'     => __( 'Inga förfrågningar än. Skicka formuläret så dyker den upp här.', 'granviktak-leads' ),
+					'all_items'     => __( 'Alla förfrågningar', 'granviktak-leads' ),
 				),
 				'public'          => false, // Never visible on the front end or in search.
 				'show_ui'         => true,
@@ -142,7 +142,7 @@ add_action(
 	'add_meta_boxes_npl_lead',
 	function () {
 		add_meta_box( 'npl_details', __( 'What they told us', 'granviktak-leads' ), 'npl_details_box', 'npl_lead', 'normal', 'high' );
-		add_meta_box( 'npl_status', __( 'Follow-up status', 'granviktak-leads' ), 'npl_status_box', 'npl_lead', 'side', 'high' );
+		add_meta_box( 'npl_status', __( 'Status', 'granviktak-leads' ), 'npl_status_box', 'npl_lead', 'side', 'high' );
 	}
 );
 
@@ -155,7 +155,7 @@ function npl_details_box( $post ) {
 	$rows = array(
 		__( 'Name', 'granviktak-leads' )     => get_post_meta( $post->ID, 'name', true ),
 		__( 'Phone', 'granviktak-leads' )    => get_post_meta( $post->ID, 'phone', true ),
-		__( 'Email', 'granviktak-leads' )    => get_post_meta( $post->ID, 'email', true ),
+		__( 'E-post', 'granviktak-leads' )    => get_post_meta( $post->ID, 'email', true ),
 		__( 'ZIP', 'granviktak-leads' )      => get_post_meta( $post->ID, 'zip', true ),
 		__( 'Needs', 'granviktak-leads' )    => npl_label( 'service', get_post_meta( $post->ID, 'service', true ) ),
 		__( 'When', 'granviktak-leads' )     => npl_label( 'timeline', get_post_meta( $post->ID, 'timeline', true ) ),
@@ -167,7 +167,7 @@ function npl_details_box( $post ) {
 			$rows[ $key ] = $value;
 		}
 	}
-	$rows[ __( 'Consent given', 'granviktak-leads' ) ] = get_post_meta( $post->ID, 'consent_at', true ) . ' — "' . get_post_meta( $post->ID, 'consent_text', true ) . '"';
+	$rows[ __( 'Samtycke lämnat', 'granviktak-leads' ) ] = get_post_meta( $post->ID, 'consent_at', true ) . ' — "' . get_post_meta( $post->ID, 'consent_text', true ) . '"';
 
 	echo '<table class="widefat striped"><tbody>';
 	foreach ( $rows as $label => $value ) {

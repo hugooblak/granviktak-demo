@@ -21,7 +21,7 @@ $gt_ref  = $gt_menu ? '"ref":' . (int) $gt_menu[0] . ',' : '';
 <div class="wp-block-group"><!-- wp:navigation {<?php echo $gt_ref; // phpcs:ignore ?>"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} /-->
 
 <!-- wp:paragraph {"className":"gt-phone","style":{"typography":{"lineHeight":"1.2"}}} -->
-<p class="gt-phone" style="line-height:1.2"><a href="tel:+46701234567">070-123 45 67</a><small>Anders svarar vard. 07–18</small></p>
+<p class="gt-phone" style="line-height:1.2"><a href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><?php echo esc_html( gt_lead( 'telefon' ) ); ?></a><small>Vi svarar vard. 07–18</small></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"gt-header-btn"} -->

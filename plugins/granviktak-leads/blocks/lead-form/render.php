@@ -1,6 +1,6 @@
 <?php
 /**
- * Quote form markup (server-rendered, so it works without JavaScript).
+ * Offertformulär markup (server-rendered, so it works without JavaScript).
  *
  * Without JS: all four questions show as one normal form.
  * With JS (view.js): one question at a time, progress bar, back button, instant error messages.
@@ -18,7 +18,7 @@ $npl_errors  = $npl_state['errors'];
 $npl_values  = $npl_state['values'];
 $npl_choices = npl_choices();
 
-// Prefill from the URL: ?zip=97001 (from the short form) and ?service=storm (from service pages).
+// Prefill from the URL: ?zip=123 45 (from the short form) and ?service=... (from service pages).
 if ( empty( $npl_values['zip'] ) && isset( $_GET['zip'] ) ) {
 	$npl_values['zip'] = substr( preg_replace( '/\D/', '', wp_unslash( $_GET['zip'] ) ), 0, 5 );
 }
@@ -62,17 +62,17 @@ $npl_wrapper = get_block_wrapper_attributes(
 if ( 'start' === $npl_variant ) :
 	$npl_quote_page = (int) get_option( 'npl_quote_page' );
 	$npl_action     = $npl_quote_page ? get_permalink( $npl_quote_page ) : home_url( '/free-quote/' );
-	$npl_button     = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : __( 'Start my free quote', 'granviktak-leads' );
+	$npl_button     = ! empty( $attributes['buttonText'] ) ? $attributes['buttonText'] : __( 'Räkna på mitt tak', 'granviktak-leads' );
 	?>
 	<div <?php echo $npl_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput ?>>
 		<form class="npl-start" method="get" action="<?php echo esc_url( $npl_action ); ?>" novalidate data-npl-start>
-			<label class="npl-label" for="<?php echo esc_attr( $npl_uid ); ?>-zip"><?php esc_html_e( 'Your ZIP code', 'granviktak-leads' ); ?></label>
+			<label class="npl-label" for="<?php echo esc_attr( $npl_uid ); ?>-zip"><?php esc_html_e( 'Ditt postnummer', 'granviktak-leads' ); ?></label>
 			<div class="npl-inline">
-				<input class="npl-input" id="<?php echo esc_attr( $npl_uid ); ?>-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" maxlength="5" required placeholder="e.g. 97001" aria-describedby="<?php echo esc_attr( $npl_uid ); ?>-zip-err" value="<?php echo esc_attr( $npl_val( 'zip' ) ); ?>">
+				<input class="npl-input" id="<?php echo esc_attr( $npl_uid ); ?>-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{3} ?[0-9]{2}" maxlength="6" required placeholder="t.ex. 123 45" aria-describedby="<?php echo esc_attr( $npl_uid ); ?>-zip-err" value="<?php echo esc_attr( $npl_val( 'zip' ) ); ?>">
 				<button class="npl-btn wp-element-button" type="submit"><?php echo esc_html( $npl_button ); ?> <span aria-hidden="true">→</span></button>
 			</div>
 			<?php $npl_error( 'zip', $npl_uid ); ?>
-			<p class="npl-fineprint"><?php esc_html_e( 'Step 1 of 4. Your details are never sold or shared.', 'granviktak-leads' ); ?></p>
+			<p class="npl-fineprint"><?php esc_html_e( 'Steg 1 av 4 · dina uppgifter lämnas aldrig vidare', 'granviktak-leads' ); ?></p>
 		</form>
 	</div>
 	<?php
@@ -87,15 +87,15 @@ $npl_field_step = array( 'zip' => 1, 'service' => 2, 'timeline' => 3, 'name' => 
 $npl_start      = 1;
 if ( $npl_errors ) {
 	$npl_start = min( array_map( fn( $k ) => $npl_field_step[ $k ] ?? 1, array_keys( $npl_errors ) ) );
-} elseif ( preg_match( '/^\d{5}$/', $npl_val( 'zip' ) ) ) {
+} elseif ( preg_match( '/^\d{3} ?\d{2}$/', $npl_val( 'zip' ) ) ) {
 	$npl_start = 2;
 }
 
 $npl_steps = array(
-	1 => __( 'Where is the property?', 'granviktak-leads' ),
-	2 => __( 'What do you need help with?', 'granviktak-leads' ),
-	3 => __( 'When would you like it done?', 'granviktak-leads' ),
-	4 => __( 'Where should we send your quote?', 'granviktak-leads' ),
+	1 => __( 'Var ligger huset?', 'granviktak-leads' ),
+	2 => __( 'Vad behöver du hjälp med?', 'granviktak-leads' ),
+	3 => __( 'När vill du ha det gjort?', 'granviktak-leads' ),
+	4 => __( 'Vart skickar vi offerten?', 'granviktak-leads' ),
 );
 ?>
 <div <?php echo $npl_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput ?> id="npl-form">
@@ -114,7 +114,7 @@ $npl_steps = array(
 
 		<?php if ( $npl_errors ) : ?>
 			<div class="npl-summary" role="alert" tabindex="-1" data-npl-summary>
-				<p><strong><?php esc_html_e( 'Please check these answers:', 'granviktak-leads' ); ?></strong></p>
+				<p><strong><?php esc_html_e( 'Kolla de här svaren:', 'granviktak-leads' ); ?></strong></p>
 				<ul>
 					<?php foreach ( $npl_errors as $npl_key => $npl_msg ) : ?>
 						<li><a href="#<?php echo esc_attr( $npl_uid . '-' . $npl_key ); ?>"><?php echo esc_html( $npl_msg ); ?></a></li>
@@ -124,15 +124,15 @@ $npl_steps = array(
 		<?php endif; ?>
 
 		<div class="npl-progress" data-npl-progress hidden>
-			<p class="npl-progress-text" aria-live="polite" data-npl-progress-text><?php echo esc_html( sprintf( /* translators: %d: step number */ __( 'Step %d of 4', 'granviktak-leads' ), $npl_start ) ); ?></p>
+			<p class="npl-progress-text" aria-live="polite" data-npl-progress-text><?php echo esc_html( sprintf( /* translators: %d: step number */ __( 'Steg %d av 4', 'granviktak-leads' ), $npl_start ) ); ?></p>
 			<div class="npl-bar" aria-hidden="true"><span data-npl-bar style="width:<?php echo (int) $npl_start * 25; ?>%"></span></div>
 		</div>
 
 		<?php /* Step 1: ZIP */ ?>
 		<fieldset class="npl-step" data-step="1" data-name="zip" tabindex="-1">
 			<legend class="npl-legend"><?php echo esc_html( $npl_steps[1] ); ?></legend>
-			<label class="npl-label" for="<?php echo esc_attr( $npl_uid ); ?>-zip"><?php esc_html_e( 'ZIP code', 'granviktak-leads' ); ?></label>
-			<input class="npl-input npl-input-short" id="<?php echo esc_attr( $npl_uid ); ?>-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" maxlength="5" required aria-describedby="<?php echo esc_attr( $npl_uid ); ?>-zip-err"<?php echo isset( $npl_errors['zip'] ) ? ' aria-invalid="true"' : ''; ?> value="<?php echo esc_attr( $npl_val( 'zip' ) ); ?>">
+			<label class="npl-label" for="<?php echo esc_attr( $npl_uid ); ?>-zip"><?php esc_html_e( 'Postnummer', 'granviktak-leads' ); ?></label>
+			<input class="npl-input npl-input-short" id="<?php echo esc_attr( $npl_uid ); ?>-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{3} ?[0-9]{2}" maxlength="6" required aria-describedby="<?php echo esc_attr( $npl_uid ); ?>-zip-err"<?php echo isset( $npl_errors['zip'] ) ? ' aria-invalid="true"' : ''; ?> value="<?php echo esc_attr( $npl_val( 'zip' ) ); ?>">
 			<?php $npl_error( 'zip', $npl_uid ); ?>
 		</fieldset>
 
@@ -142,7 +142,7 @@ $npl_steps = array(
 			?>
 			<fieldset class="npl-step" data-step="<?php echo (int) $npl_n; ?>" data-name="<?php echo esc_attr( $npl_field ); ?>" tabindex="-1" id="<?php echo esc_attr( $npl_uid . '-' . $npl_field ); ?>" aria-describedby="<?php echo esc_attr( $npl_uid . '-' . $npl_field ); ?>-err"<?php echo isset( $npl_errors[ $npl_field ] ) ? ' aria-invalid="true"' : ''; ?>>
 				<legend class="npl-legend"><?php echo esc_html( $npl_steps[ $npl_n ] ); ?></legend>
-				<p class="npl-hint npl-auto-hint"><?php esc_html_e( 'Choosing an answer takes you to the next question.', 'granviktak-leads' ); ?></p>
+				<p class="npl-hint npl-auto-hint"><?php esc_html_e( 'När du väljer går du vidare till nästa fråga.', 'granviktak-leads' ); ?></p>
 				<div class="npl-choices">
 					<?php foreach ( $npl_choices[ $npl_field ] as $npl_value => $npl_label ) : ?>
 						<label class="npl-choice">
@@ -160,9 +160,9 @@ $npl_steps = array(
 			<legend class="npl-legend"><?php echo esc_html( $npl_steps[4] ); ?></legend>
 			<?php
 			$npl_contact = array(
-				'name'  => array( __( 'First name', 'granviktak-leads' ), 'text', 'given-name', '' ),
-				'phone' => array( __( 'Mobile phone', 'granviktak-leads' ), 'tel', 'tel-national', __( 'To book your inspection time.', 'granviktak-leads' ) ),
-				'email' => array( __( 'Email', 'granviktak-leads' ), 'email', 'email', __( 'Your written quote is sent here.', 'granviktak-leads' ) ),
+				'name'  => array( __( 'Förnamn', 'granviktak-leads' ), 'text', 'given-name', '' ),
+				'phone' => array( __( 'Mobilnummer', 'granviktak-leads' ), 'tel', 'tel-national', __( 'För att boka tid för besiktningen.', 'granviktak-leads' ) ),
+				'email' => array( __( 'E-post', 'granviktak-leads' ), 'email', 'email', __( 'Hit skickar vi den skriftliga offerten.', 'granviktak-leads' ) ),
 			);
 			foreach ( $npl_contact as $npl_key => $npl_f ) :
 				$npl_describe = $npl_uid . '-' . $npl_key . '-err' . ( $npl_f[3] ? ' ' . $npl_uid . '-' . $npl_key . '-hint' : '' );
@@ -181,7 +181,7 @@ $npl_steps = array(
 		<div class="npl-nav">
 			<button type="button" class="npl-back" data-npl-back hidden><span aria-hidden="true">←</span> <?php esc_html_e( 'Back', 'granviktak-leads' ); ?></button>
 			<button type="button" class="npl-btn wp-element-button" data-npl-next hidden><?php esc_html_e( 'Next', 'granviktak-leads' ); ?> <span aria-hidden="true">→</span></button>
-			<button type="submit" class="npl-btn wp-element-button" data-npl-submit><?php esc_html_e( 'Get my free quote', 'granviktak-leads' ); ?></button>
+			<button type="submit" class="npl-btn wp-element-button" data-npl-submit><?php esc_html_e( 'Skicka min förfrågan', 'granviktak-leads' ); ?></button>
 		</div>
 		<p class="npl-fineprint" data-npl-consent><?php echo esc_html( npl_consent_text() ); ?></p>
 	</form>

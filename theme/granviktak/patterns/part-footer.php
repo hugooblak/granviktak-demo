@@ -7,7 +7,7 @@
  * Markup ligger i en pattern så att länkarna använder sajtens egen adress.
  */
 $url = function ( $p ) { return esc_url( home_url( $p ) ); };
-$orter = array( 'Sollentuna', 'Järfälla', 'Täby', 'Nacka', 'Huddinge', 'Solna', 'Danderyd', 'Lidingö' );
+$orter = array_slice( (array) gt_lead( 'orter', array() ), 0, 8 );
 ?>
 <!-- wp:group {"tagName":"div","className":"gt-footer is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
 <div class="wp-block-group gt-footer is-style-section-dark" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}}} -->
@@ -21,7 +21,7 @@ $orter = array( 'Sollentuna', 'Järfälla', 'Täby', 'Nacka', 'Huddinge', 'Solna
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><a href="tel:+46701234567"><strong>070-123 45 67</strong></a><br>Exempelgatan 12, 191 62 Sollentuna<br>Vard. 07–18, helger efter överenskommelse<br>Org.nr 556000-0000 <span class="gt-sample">(platshållare)</span></p>
+<p class="has-small-font-size"><a href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><strong><?php echo esc_html( gt_lead( 'telefon' ) ); ?></strong></a><br><?php echo esc_html( gt_lead( 'adress' ) ); ?><br>Vard. 07–18, helger efter överenskommelse<br>Org.nr 556000-0000 <span class="gt-sample">(platshållare)</span></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 

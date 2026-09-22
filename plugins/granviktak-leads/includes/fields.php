@@ -19,16 +19,16 @@ function npl_choices() {
 		'npl_choices',
 		array(
 			'service'  => array(
-				'replacement' => __( 'Full roof replacement', 'granviktak-leads' ),
+				'replacement' => __( 'Lägga om hela taket', 'granviktak-leads' ),
 				'storm'       => __( 'Storm or hail damage', 'granviktak-leads' ),
-				'repair'      => __( 'Leak or repair', 'granviktak-leads' ),
-				'inspection'  => __( 'Inspection only', 'granviktak-leads' ),
-				'not-sure'    => __( 'Not sure yet', 'granviktak-leads' ),
+				'repair'      => __( 'Läcka eller reparation', 'granviktak-leads' ),
+				'inspection'  => __( 'Bara en besiktning', 'granviktak-leads' ),
+				'not-sure'    => __( 'Vet inte än', 'granviktak-leads' ),
 			),
 			'timeline' => array(
-				'asap'     => __( 'As soon as possible', 'granviktak-leads' ),
-				'1-3'      => __( 'In the next 1–3 months', 'granviktak-leads' ),
-				'research' => __( 'Just getting prices', 'granviktak-leads' ),
+				'asap'     => __( 'Så snart som möjligt', 'granviktak-leads' ),
+				'1-3'      => __( 'Inom 1–3 månader', 'granviktak-leads' ),
+				'research' => __( 'Jag kollar bara priser', 'granviktak-leads' ),
 			),
 		)
 	);
@@ -63,7 +63,7 @@ function npl_label( $field, $value ) {
 function npl_consent_text() {
 	return apply_filters(
 		'npl_consent_text',
-		__( 'By clicking "Get my free quote" you agree that Granvik Tak Roofing may call, text or email you about your quote, including by automated means. Consent is not a condition of purchase. Message and data rates may apply. Reply STOP to opt out.', 'granviktak-leads' )
+		__( 'Genom att skicka förfrågan godkänner du att vi kontaktar dig om ditt tak. Vi sparar uppgifterna bara för det, lämnar dem aldrig vidare, och du kan när som helst be oss radera dem.', 'granviktak-leads' )
 	);
 }
 
@@ -75,11 +75,11 @@ function npl_consent_text() {
 function npl_statuses() {
 	return array(
 		'new'       => __( 'New', 'granviktak-leads' ),
-		'contacted' => __( 'Contacted', 'granviktak-leads' ),
+		'contacted' => __( 'Kontaktad', 'granviktak-leads' ),
 		'quoted'    => __( 'Quote sent', 'granviktak-leads' ),
 		'won'       => __( 'Won', 'granviktak-leads' ),
 		'lost'      => __( 'Lost', 'granviktak-leads' ),
-		'spam'      => __( 'Suspected spam', 'granviktak-leads' ),
+		'spam'      => __( 'Misstänkt spam', 'granviktak-leads' ),
 	);
 }
 

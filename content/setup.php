@@ -63,7 +63,7 @@ function nps_page( $slug, $title, $content, $excerpt, $template = '' ) {
 /* --------------------------------------------------------------------------
  * Site settings
  * ----------------------------------------------------------------------- */
-update_option( 'blogname', 'Granvik Tak Roofing' );
+update_option( 'blogname', 'Granvik Tak' );
 update_option( 'blogdescription', 'Takomläggning, taktvätt och takreparation i norra Stockholm. Fast pris skriftligt inom två arbetsdagar.' );
 update_option( 'timezone_string', 'America/Los_Angeles' );
 update_option( 'date_format', 'F j, Y' );
@@ -193,7 +193,7 @@ $privacy_content = <<<'HTML'
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>When you ask for a quote we collect your ZIP code, what you need, your timeline, first name, phone number and email. We also record which page or ad brought you to the site, so we know which advertising works.</p>
+<p>När du begär en offert sparar vi ditt postnummer, vad du behöver hjälp med, när du vill ha det gjort, ditt förnamn, telefonnummer och e-post. Vi noterar också vilken sida eller annons du kom ifrån, så att vi vet vilken marknadsföring som fungerar.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
@@ -209,10 +209,10 @@ $privacy_content = <<<'HTML'
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Reply STOP to any text, or email us to have your details deleted.</p>
+<p>Hör av dig när som helst så raderar vi dina uppgifter. Du har rätt att få ut, rätta eller radera det vi sparat om dig.</p>
 <!-- /wp:paragraph -->
 HTML;
-$privacy = nps_page( 'privacy-policy', 'Privacy policy', $privacy_content, 'How Granvik Tak Roofing uses the details you send with the quote form.' );
+$privacy = nps_page( 'integritetspolicy', 'Integritetspolicy', $privacy_content, 'Så använder Granvik Tak uppgifterna du skickar med offertformuläret.' );
 update_option( 'wp_page_for_privacy_policy', $privacy );
 
 $guides = nps_page( 'takguider', 'Roofing guides', '', 'Plain answers to the questions homeowners ask about roofs.' );
@@ -257,7 +257,7 @@ if ( ! get_posts( array( 'post_type' => 'wp_navigation', 'title' => 'Main menu',
 			$attrs['id']  = $page ? $page->ID : 0;
 			$attrs['type'] = 'page';
 		}
-		$nav .= '<!-- wp:navigation-link ' . wp_json_encode( $attrs, JSON_UNESCAPED_SLASHES ) . ' /-->';
+		$nav .= '<!-- wp:navigation-link ' . wp_json_encode( $attrs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . ' /-->';
 	}
 	wp_insert_post(
 		array(
@@ -275,7 +275,7 @@ if ( ! get_posts( array( 'post_type' => 'wp_navigation', 'title' => 'Main menu',
  * ----------------------------------------------------------------------- */
 if ( post_type_exists( 'npl_lead' ) && ! get_posts( array( 'post_type' => 'npl_lead', 'numberposts' => 1 ) ) ) {
 	$samples = array(
-		array( 'Sample lead A', '(555) 010-0171', 'sample-a@example.com', '97001', 'storm', 'asap', 'contacted', array( 'utm_source' => 'google', 'utm_medium' => 'cpc', 'utm_campaign' => 'hail-spring', 'gclid' => 'EXAMPLE-GCLID' ), '-2 days' ),
+		array( 'Exempel A', '070-000 00 01', 'exempel-a@exempel.se', '191 62', 'storm', 'asap', 'contacted', array( 'utm_source' => 'google', 'utm_medium' => 'cpc', 'utm_campaign' => 'hail-spring', 'gclid' => 'EXAMPLE-GCLID' ), '-2 days' ),
 		array( 'Sample lead B', '(555) 010-0183', 'sample-b@example.com', '97012', 'replacement', '1-3', 'new', array( 'utm_source' => 'facebook', 'utm_medium' => 'paid_social', 'utm_campaign' => 'financing' ), '-5 hours' ),
 		array( 'Sample lead C', '(555) 010-0195', 'sample-c@example.com', '97003', 'inspection', 'research', 'new', array( 'referrer' => 'https://www.google.com/' ), '-40 minutes' ),
 	);

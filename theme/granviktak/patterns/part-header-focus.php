@@ -14,7 +14,7 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"align":"right","className":"gt-focus-phone","style":{"typography":{"lineHeight":"1.3"}},"fontSize":"small"} -->
-<p class="has-text-align-right gt-focus-phone has-small-font-size" style="line-height:1.3"><span class="gt-hide-mobile">Questions? </span><a href="tel:+15550100142"><strong>(555) 010-0142</strong></a></p>
+<p class="has-text-align-right gt-focus-phone has-small-font-size" style="line-height:1.3"><span class="gt-hide-mobile">Frågor? </span><a href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><strong><?php echo esc_html( gt_lead( 'telefon' ) ); ?></strong></a></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->

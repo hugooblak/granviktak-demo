@@ -15,14 +15,14 @@ $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"sand","fontSize":"large"} -->
-<p class="has-sand-color has-text-color has-large-font-size">Ring Anders. Han har lagt tak i trettio år och svarar oftast direkt — även på kvällar. Kostar ingenting att fråga.</p>
+<p class="has-sand-color has-text-color has-large-font-size">Vi svarar oftast direkt, även på kvällar. Det kostar ingenting att fråga.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center","width":"42%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:42%"><!-- wp:buttons {"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"accent","textColor":"base","width":100} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="tel:+46701234567">Ring Anders · 070-123 45 67</a></div>
+<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="tel:<?php echo esc_attr( gt_lead( 'telefon_tel' ) ); ?>"><?php echo esc_html( gt_ring_label() ); ?></a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline","textColor":"base","width":100} -->

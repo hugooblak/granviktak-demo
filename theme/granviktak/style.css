@@ -340,3 +340,28 @@ body.page-template-page-focus { background: var(--wp--preset--color--sand); }
   .gt-review p:nth-child(2) { font-size: var(--wp--preset--font-size--medium); }
   .gt-faq-item summary { font-size: var(--wp--preset--font-size--medium); }
 }
+
+/* --- Hero form card: proof first, big, then one field ----------------- */
+.gt-sec-hero .is-style-card { padding: var(--wp--preset--spacing--50) !important; }
+.gt-proof {
+  display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  padding-bottom: var(--wp--preset--spacing--30);
+  border-bottom: 1px solid var(--wp--preset--color--line);
+  margin-bottom: var(--wp--preset--spacing--30);
+}
+.gt-proof p { margin: 0; }
+.gt-proof-score strong { font-size: 2.5rem; line-height: 1; letter-spacing: -.02em; }
+.gt-proof-score .gt-stars::before { font-size: 1.15rem; letter-spacing: 2px; }
+.gt-proof-count { color: var(--wp--preset--color--ink-soft); }
+.gt-sec-hero .is-style-card h2 { margin: 0 0 var(--wp--preset--spacing--30); }
+
+/* bigger tap targets in the hero form: this is the one thing on the page
+   that has to work with a thumb, on a phone, in a hurry */
+.gt-sec-hero .npl-input { font-size: 1.0625rem; padding: .95rem 1rem; }
+.gt-sec-hero .npl-form button,
+.gt-sec-hero .wp-element-button { font-size: 1.0625rem; padding: 1rem 1.2rem; }
+.gt-sec-hero .npl-fine, .gt-sec-hero .npl-form small { font-size: .8125rem; }
+
+@media (max-width: 781px) {
+  .gt-proof-score strong { font-size: 2.1rem; }
+}

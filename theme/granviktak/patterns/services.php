@@ -8,9 +8,9 @@
 $img = get_theme_file_uri( 'assets/img/' );
 $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 $services = array(
-	array( 'svc-omlaggning', 'Takomläggning', 'Rivning av gammalt tak, ny underlagspapp, läkt och pannor. Klart på 2–5 dagar på ett normalt villatak.', '/takomlaggning', 'Ett nytt tak' ),
-	array( 'svc-taktvatt', 'Taktvätt & impregnering', 'Vi tvättar bort mossa och alger och behandlar ytan. Förlänger livslängden med 10–15 år.', '/taktvatt', 'Innan du byter' ),
-	array( 'svc-reparation', 'Takreparation', 'Läckor, trasiga pannor, plåt och hängrännor. Akuta jobb samma vecka.', '/takreparation', 'Något läcker' ),
+	array( gt_lead_bild( 0 ), 'Takomläggning', 'Rivning av gammalt tak, ny underlagspapp, läkt och pannor. Klart på 2–5 dagar på ett normalt villatak.', '/takomlaggning', 'Ett nytt tak' ),
+	array( gt_lead_bild( 1 ), 'Taktvätt & impregnering', 'Vi tvättar bort mossa och alger och behandlar ytan. Förlänger livslängden med 10–15 år.', '/taktvatt', 'Innan du byter' ),
+	array( gt_lead_bild( 2 ), 'Takreparation', 'Läckor, trasiga pannor, plåt och hängrännor. Akuta jobb samma vecka.', '/takreparation', 'Något läcker' ),
 );
 ?>
 <!-- wp:group {"align":"full","className":"gt-sec-services","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
@@ -23,7 +23,7 @@ $services = array(
 foreach ( $services as $s ) :
 	?><!-- wp:group {"className":"gt-card","layout":{"type":"default"}} -->
 <div class="wp-block-group gt-card"><!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"gt-card-img"} -->
-<figure class="wp-block-image size-full gt-card-img"><a href="<?php echo $url( $s[3] ); ?>"><img src="<?php echo esc_url( $img . $s[0] . '.svg' ); ?>" alt="Platshållare: <?php echo esc_attr( $s[1] ); ?> — byt mot ett eget jobbfoto"/></a></figure>
+<figure class="wp-block-image size-full gt-card-img"><a href="<?php echo $url( $s[3] ); ?>"><img src="<?php echo esc_url( gt_lead_img( $s[0] ) ); ?>" alt="Platshållare: <?php echo esc_attr( $s[1] ); ?> — byt mot ett eget jobbfoto"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"className":"gt-card-kicker","fontSize":"small"} -->

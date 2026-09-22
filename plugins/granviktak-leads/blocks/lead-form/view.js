@@ -1,5 +1,5 @@
 /**
- * Quote form behaviour (about 3 KB compressed, no libraries).
+ * Offertformulär behaviour (about 3 KB compressed, no libraries).
  *
  * - Turns the full form into one question at a time, with a progress bar and back button.
  * - Checks each step before moving on, with messages linked to the fields for screen readers.
@@ -16,18 +16,18 @@
 
 	/* ---------- Messages ---------- */
 	var MSG = {
-		zip: 'Enter your 5-digit ZIP code.',
-		service: 'Choose what you need help with.',
-		timeline: 'Choose when you would like the work done.',
-		name: 'Enter your first name.',
-		phone: 'Enter a 10-digit phone number, like 555 010 0142.',
-		email: 'Enter an email address, like name@example.com.'
+		zip: 'Enter your 5-digit Postnummer.',
+		service: 'Välj vad du behöver hjälp med.',
+		timeline: 'Välj när du vill ha jobbet gjort.',
+		name: 'Skriv ditt förnamn.',
+		phone: 'Skriv ditt mobilnummer, till exempel 070-123 45 67.',
+		email: 'Skriv en e-postadress, till exempel namn@exempel.se.'
 	};
 
 	function fieldValid( input, form ) {
 		var v = ( input.value || '' ).trim();
 		switch ( input.name ) {
-			case 'zip': return /^\d{5}$/.test( v );
+			case 'zip': return /^\d{3} ?\d{2}$/.test( v );
 			case 'name': return v.length >= 2;
 			case 'phone': var d = v.replace( /\D/g, '' ); if ( d.length === 11 && d[ 0 ] === '1' ) d = d.slice( 1 ); return d.length === 10;
 			case 'email': return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test( v );
@@ -200,7 +200,7 @@
 		// Coming back with the browser's Back button: make the submit button usable again.
 		window.addEventListener( 'pageshow', function () {
 			submit.disabled = false;
-			submit.textContent = 'Get my free quote';
+			submit.textContent = 'Skicka min förfrågan';
 		} );
 	} );
 } )();

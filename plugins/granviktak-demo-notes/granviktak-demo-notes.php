@@ -20,6 +20,12 @@ defined( 'ABSPATH' ) || exit;
 function npd_notes_on() {
 	static $on = null;
 	if ( null === $on ) {
+		// Never on a demo built for a real company: these notes explain the sales
+		// reasoning behind each section and are meant for a portfolio audience.
+		if ( function_exists( 'gt_lead' ) && gt_lead( 'ar_riktig' ) ) {
+			$on = false;
+			return $on;
+		}
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['cro'] ) ) {
 			$on = '1' === $_GET['cro'];
@@ -134,11 +140,28 @@ add_filter(
 add_action(
 	'wp_body_open',
 	function () {
+		// A demo built for a real company carries that company's own reviews and
+		// photos, so calling it fictional would be a lie - and the CRO notes are
+		// written for a portfolio audience, not for the roofer being pitched.
+		$ar_riktig = function_exists( 'gt_lead' ) && gt_lead( 'ar_riktig' );
+
+		if ( $ar_riktig ) {
+			$foretag = function_exists( 'gt_lead' ) ? gt_lead( 'foretag' ) : get_bloginfo( 'name' );
+			?>
+			<div class="npd-bar" role="region" aria-label="Om den här sidan">
+				<p><strong>Förslag på ny hemsida för <?php echo esc_html( $foretag ); ?>.</strong>
+					Text, omdömen och bilder är hämtade från er egen Google-profil. Inget är publicerat —
+					sidan ligger bara här tills ni sagt vad ni tycker.</p>
+			</div>
+			<?php
+			return;
+		}
+
 		$toggle = add_query_arg( 'cro', npd_notes_on() ? '0' : '1' );
 		?>
 		<div class="npd-bar" role="region" aria-label="Demo notice">
-			<p><strong>Portfolio demo.</strong> Granvik Tak Roofing is fictional; reviews and figures are samples.
-				<a href="<?php echo esc_url( $toggle ); ?>"><?php echo npd_notes_on() ? 'Hide CRO notes' : 'Show the CRO notes behind each section'; ?></a>
+			<p><strong>Portföljdemo.</strong> <?php echo esc_html( get_bloginfo( 'name' ) ); ?> är ett påhittat företag; omdömen och siffror är exempel.
+				<a href="<?php echo esc_url( $toggle ); ?>"><?php echo npd_notes_on() ? 'Dölj CRO-noteringarna' : 'Visa CRO-noteringarna bakom varje sektion'; ?></a>
 			</p>
 		</div>
 		<?php

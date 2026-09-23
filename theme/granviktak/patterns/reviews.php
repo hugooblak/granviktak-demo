@@ -42,7 +42,7 @@ foreach ( $reviews as $r ) :
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"gt-review-by","fontSize":"small","textColor":"ink-soft"} -->
-<p class="gt-review-by has-ink-soft-color has-text-color"><strong><?php echo esc_html( $r[1] ); ?></strong> · <?php echo esc_html( $r[3] ); ?></p>
+<p class="gt-review-by has-ink-soft-color has-text-color"><strong><?php echo esc_html( isset( $r[1] ) ? $r[1] : '' ); ?></strong> · <?php echo esc_html( isset( $r[2] ) ? $r[2] : '' ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

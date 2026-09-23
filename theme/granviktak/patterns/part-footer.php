@@ -17,7 +17,7 @@ $orter = array_slice( (array) gt_lead( 'orter', array() ), 0, 8 );
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size">Takomläggning, taktvätt och takreparation åt villaägare i norra Stockholm. Familjeföretag sedan 1996.</p>
+<p class="has-small-font-size"><?php echo esc_html( gt_bransch( 'yrke' ) ); ?> åt villaägare och bostadsrätter. Fast pris skriftligt och 10 års garanti på arbetet.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"fontSize":"small"} -->
@@ -32,15 +32,7 @@ $orter = array_slice( (array) gt_lead( 'orter', array() ), 0, 8 );
 
 <!-- wp:list {"fontSize":"small"} -->
 <ul class="wp-block-list has-small-font-size"><!-- wp:list-item -->
-<li><a href="<?php echo $url( '/takomlaggning' ); ?>">Takomläggning</a></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><a href="<?php echo $url( '/taktvatt' ); ?>">Taktvätt &amp; impregnering</a></li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li><a href="<?php echo $url( '/takreparation' ); ?>">Takreparation</a></li>
+<?php foreach ( (array) gt_bransch( 'tjanster' ) as $gt_i => $gt_t ) : ?><li><a href="<?php echo $url( '/tjanst-' . ( $gt_i + 1 ) ); ?>"><?php echo esc_html( $gt_t[1] ); ?></a></li><?php endforeach; ?>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->

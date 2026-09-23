@@ -7,11 +7,13 @@
  */
 $img = get_theme_file_uri( 'assets/img/' );
 $url = function ( $path ) { return esc_url( home_url( $path ) ); };
-$services = array(
-	array( gt_lead_bild( 0 ), 'Takomläggning', 'Rivning av gammalt tak, ny underlagspapp, läkt och pannor. Klart på 2–5 dagar på ett normalt villatak.', '/takomlaggning', 'Ett nytt tak' ),
-	array( gt_lead_bild( 1 ), 'Taktvätt & impregnering', 'Vi tvättar bort mossa och alger och behandlar ytan. Förlänger livslängden med 10–15 år.', '/taktvatt', 'Innan du byter' ),
-	array( gt_lead_bild( 2 ), 'Takreparation', 'Läckor, trasiga pannor, plåt och hängrännor. Akuta jobb samma vecka.', '/takreparation', 'Något läcker' ),
-);
+$bild = array( gt_lead_bild( 0 ), gt_lead_bild( 1 ), gt_lead_bild( 2 ) );
+$fallback = array( 'svc-omlaggning.svg', 'svc-taktvatt.svg', 'svc-reparation.svg' );
+$services = array();
+foreach ( (array) gt_bransch( 'tjanster' ) as $i => $t ) {
+	// $t is array( kicker, title, description )
+	$services[] = array( $bild[ $i ] ? $bild[ $i ] : $fallback[ $i ], $t[1], $t[2], '/tjanst-' . ( $i + 1 ), $t[0] );
+}
 ?>
 <!-- wp:group {"align":"full","className":"gt-sec-services","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
 <div class="wp-block-group alignfull gt-sec-services" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"align":"wide","fontSize":"xx-large"} -->
@@ -23,7 +25,7 @@ $services = array(
 foreach ( $services as $s ) :
 	?><!-- wp:group {"className":"gt-card","layout":{"type":"default"}} -->
 <div class="wp-block-group gt-card"><!-- wp:image {"sizeSlug":"full","linkDestination":"custom","className":"gt-card-img"} -->
-<figure class="wp-block-image size-full gt-card-img"><a href="<?php echo $url( $s[3] ); ?>"><img src="<?php echo esc_url( gt_lead_img( $s[0] ) ); ?>" alt="Platshållare: <?php echo esc_attr( $s[1] ); ?> — byt mot ett eget jobbfoto"/></a></figure>
+<figure class="wp-block-image size-full gt-card-img"><a href="<?php echo $url( $s[3] ); ?>"><img src="<?php echo esc_url( gt_lead_img( $s[0] ) ); ?>" alt="<?php echo esc_attr( $s[1] ); ?>"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"className":"gt-card-kicker","fontSize":"small"} -->

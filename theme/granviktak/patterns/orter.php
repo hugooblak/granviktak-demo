@@ -18,7 +18,7 @@ if ( count( $orter ) < 3 ) { return; }
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"sand"} -->
-<p class="has-sand-color has-text-color">Vi har lagt tak i hela norra Stockholm i trettio år. Klicka på din kommun så ser du jobb vi gjort där.</p>
+<p class="has-sand-color has-text-color">Vi jobbar i hela området. Klicka på din kommun så ser du jobb vi gjort där.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -28,7 +28,7 @@ if ( count( $orter ) < 3 ) { return; }
 foreach ( $orter as $o ) :
 	$slug = strtolower( str_replace( array( ' ', 'å', 'ä', 'ö' ), array( '-', 'a', 'a', 'o' ), $o ) );
 	?><!-- wp:paragraph {"className":"gt-ort"} -->
-<p class="gt-ort"><a href="<?php echo $url( '/taklaggare-i-' . $slug ); ?>">Takläggare i <?php echo esc_html( $o ); ?></a></p>
+<p class="gt-ort"><a href="<?php echo $url( '/taklaggare-i-' . $slug ); ?>"><?php echo esc_html( gt_bransch( 'yrke' ) ); ?> i <?php echo esc_html( $o ); ?></a></p>
 <!-- /wp:paragraph -->
 
 <?php endforeach; ?></div>

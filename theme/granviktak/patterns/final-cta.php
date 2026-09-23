@@ -11,7 +11,7 @@ $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 <div class="wp-block-group alignfull gt-sec-final has-ink-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"58%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:58%"><!-- wp:heading {"textColor":"base","fontSize":"xx-large"} -->
-<h2 class="wp-block-heading has-base-color has-text-color has-xx-large-font-size">Undrar du vad ditt tak kostar?</h2>
+<h2 class="wp-block-heading has-base-color has-text-color has-xx-large-font-size">Undrar du vad ditt jobb kostar?</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"sand","fontSize":"large"} -->
@@ -26,7 +26,7 @@ $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline","textColor":"base","width":100} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-base-color has-text-color wp-element-button" href="<?php echo $url( '/offert' ); ?>">Boka kostnadsfri besiktning</a></div>
+<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline"><a class="wp-block-button__link has-base-color has-text-color wp-element-button" href="<?php echo $url( '/offert' ); ?>"><?php echo esc_html( gt_bransch( 'cta' ) ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 

@@ -27,6 +27,7 @@ function gt_lead( $key, $default = '' ) {
 	if ( null === $data ) {
 		$defaults = array(
 			'foretag'    => 'Granvik Tak',
+			'bransch'    => 'Takläggare',   // Google's own category; picks the copy set
 			'kontakt'    => '',   // only set when the owner's name is actually known
 			'telefon'    => '070-123 45 67',
 			'telefon_tel'=> '+46701234567',
@@ -103,3 +104,6 @@ function gt_ring_label() {
 	$namn = gt_lead( 'kontakt' );
 	return $namn ? sprintf( 'Ring %s · %s', $namn, gt_lead( 'telefon' ) ) : 'Ring ' . gt_lead( 'telefon' );
 }
+
+// Trade-dependent copy (services, headline, ROT example).
+require_once __DIR__ . '/bransch.php';

@@ -40,13 +40,14 @@ $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 <!-- wp:column {"verticalAlignment":"top","width":"54%"} -->
 <div class="wp-block-column is-vertically-aligned-top" style="flex-basis:54%"><!-- wp:group {"className":"is-style-card gt-rot-calc","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-card gt-rot-calc" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"className":"is-style-eyebrow"} -->
-<p class="is-style-eyebrow">Räkneexempel — villatak, 140 m²</p>
+<p class="is-style-eyebrow"><?php $gt_rot = (array) gt_bransch( 'rot' ); echo esc_html( $gt_rot[6] ); ?></p>
 <!-- /wp:paragraph --><?php
+$gt_rot = isset( $gt_rot ) ? $gt_rot : (array) gt_bransch( 'rot' );
 $rows = array(
-	array( 'Material (pannor, papp, läkt, plåt)', '92 000 kr', '' ),
-	array( 'Arbete', '120 000 kr', '' ),
-	array( 'ROT-avdrag, 30 % av arbetet', '−36 000 kr', 'gt-rot-minus' ),
-	array( 'Du betalar', '176 000 kr', 'gt-rot-total' ),
+	array( $gt_rot[0], $gt_rot[1], '' ),
+	array( $gt_rot[2], $gt_rot[3], '' ),
+	array( 'ROT-avdrag, 30 % av arbetet', $gt_rot[4], 'gt-rot-minus' ),
+	array( 'Du betalar', $gt_rot[5], 'gt-rot-total' ),
 );
 foreach ( $rows as $r ) :
 	?><!-- wp:group {"className":"gt-rot-row <?php echo esc_attr( $r[2] ); ?>","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"nowrap"}} -->
@@ -60,12 +61,12 @@ foreach ( $rows as $r ) :
 <!-- /wp:group -->
 
 <?php endforeach; ?><!-- wp:paragraph {"fontSize":"small","textColor":"ink-soft"} -->
-<p class="has-ink-soft-color has-text-color has-small-font-size"><span class="gt-sample">Exempelsiffror</span> — ditt tak kostar det ditt tak kostar. Vi kommer ut, mäter och skickar ett fast pris innan något bokas.</p>
+<p class="has-ink-soft-color has-text-color has-small-font-size"><span class="gt-sample">Exempelsiffror</span> — ditt jobb kostar det ditt jobb kostar. Vi kommer ut, tittar och skickar ett fast pris innan något bokas.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"accent","textColor":"base","width":100} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="<?php echo $url( '/offert' ); ?>">Få ett fast pris på ditt tak</a></div>
+<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link has-base-color has-accent-background-color has-text-color has-background wp-element-button" href="<?php echo $url( '/offert' ); ?>"><?php echo esc_html( gt_bransch( 'cta' ) ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

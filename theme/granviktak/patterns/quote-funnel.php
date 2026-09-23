@@ -13,7 +13,7 @@ $url = function ( $path ) { return esc_url( home_url( $path ) ); };
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"62%"} -->
 <div class="wp-block-column" style="flex-basis:62%"><!-- wp:group {"className":"is-style-card gt-lift","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"default"}} -->
 <div class="wp-block-group is-style-card gt-lift" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"level":1,"fontSize":"xx-large"} -->
-<h1 class="wp-block-heading has-xx-large-font-size">Få ett fast pris på ditt tak</h1>
+<h1 class="wp-block-heading has-xx-large-font-size">Få ett fast pris</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"ink-soft"} -->

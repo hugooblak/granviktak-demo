@@ -1,12 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-label="Platshallare: svc-reparation">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-label="Platshållarbild">
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="#3A2A1C"/><stop offset="100%" stop-color="#180F08"/></linearGradient>
-<radialGradient id="l" cx="0.72" cy="0.3" r="0.7"><stop offset="0%" stop-color="#F0955A" stop-opacity="0.5"/><stop offset="100%" stop-color="#F0955A" stop-opacity="0"/></radialGradient>
+<linearGradient id="g" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0%" stop-color="#3A2A1C"/><stop offset="100%" stop-color="#140B05"/></linearGradient>
+<radialGradient id="l" cx="0.68" cy="0.36" r="0.75"><stop offset="0%" stop-color="#F0955A" stop-opacity="0.55"/><stop offset="100%" stop-color="#F0955A" stop-opacity="0"/></radialGradient>
+<linearGradient id="s" x1="0" y1="0" x2="1" y2="0.6"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
 </defs>
-<rect width="800" height="560" fill="url(#g)"/><rect width="800" height="560" fill="url(#l)"/>
-<path d="M0 560 L0 420 L400 200 L800 420 L800 560 Z" fill="#100904" opacity=".88"/>
-<path d="M400 200 L800 420 L800 436 L400 216 Z" fill="#F0955A" opacity=".5"/>
-<path d="M430 300 L470 280 L500 330 L455 352 Z" fill="#050302" opacity=".9"/>
-<path d="M430 300 L470 280" stroke="#F0955A" stroke-opacity=".7" stroke-width="3"/>
-<rect x="520" y="250" width="14" height="120" rx="3" fill="#050302" opacity=".85" transform="rotate(22 527 310)"/>
+<rect width="800" height="560" fill="url(#g)"/>
+<rect width="800" height="560" fill="url(#l)"/>
+<g opacity="0.5">
+  <path d="M0 347 L800 268 L800 560 L0 560 Z" fill="#000" opacity="0.30"/>
+  <path d="M0 448 L800 392 L800 560 L0 560 Z" fill="#000" opacity="0.26"/>
+</g>
+<rect width="800" height="560" fill="url(#s)"/>
+<g stroke="#fff" stroke-opacity="0.06" stroke-width="1.5">
+  <path d="M176 0 L272 560"/><path d="M504 0 L608 560"/>
+</g>
 </svg>

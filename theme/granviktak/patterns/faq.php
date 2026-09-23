@@ -6,12 +6,12 @@
  * Description: Sex frågor kunder faktiskt ställer. Öppnas och stängs utan JavaScript.
  */
 $faqs = array(
-	array( 'Hur lång tid tar en takomläggning?', 'Ett normalt villatak tar 2–5 dagar beroende på storlek, taklutning och vad vi hittar under de gamla pannorna. Vi säger alltid till innan vi börjar om något ser ut att dra ut på tiden.' ),
-	array( 'Vad kostar det?', 'Det beror på takets yta, lutning, material och hur mycket som behöver bytas under pannorna. Vi kommer ut och tittar kostnadsfritt och skickar ett fast pris — inte en ungefärlig siffra.' ),
-	array( 'Måste jag flytta ut under tiden?', 'Nej. Du kan bo kvar hela tiden. Det låter en del på dagarna, men taket är aldrig öppet över natten.' ),
+	gt_bransch( 'faq1' ),
+	array( 'Vad kostar det?', 'Det beror på omfattningen och vad vi hittar när vi är på plats. Vi kommer ut och tittar kostnadsfritt och skickar sedan ett fast pris — inte en ungefärlig siffra.' ),
+	array( 'Måste jag flytta ut under tiden?', 'Nej, i de allra flesta fall kan du bo kvar. Vi säger till i förväg om något moment gör att du behöver vara borta en dag.' ),
 	array( 'Hur fungerar ROT-avdraget?', 'Vi drar av 30 % av arbetskostnaden direkt på fakturan, upp till 50 000 kr per person och år, och sköter ansökan mot Skatteverket. Du behöver inte göra något.' ),
-	array( 'Vad händer om det regnar?', 'Vi täcker taket varje kväll och river aldrig mer än vi hinner lägga igen samma dag. Vid ihållande regn pausar vi hellre än att lägga papp på blött underlag.' ),
-	array( 'Vad ingår i garantin?', '10 års garanti på vårt arbete, utöver materialtillverkarens egen garanti på pannor och papp. Du får den skriftligt när jobbet är klart.' ),
+	array( 'Vad händer om något oväntat dyker upp?', 'Vi stannar och visar dig vad vi hittat, med foton och vad det kostar att åtgärda. Du bestämmer innan vi fortsätter — det dyker aldrig upp på slutfakturan.' ),
+	array( 'Vad ingår i garantin?', '10 års garanti på vårt arbete, utöver materialtillverkarens egen garanti på det vi monterat. Du får den skriftligt när jobbet är klart.' ),
 );
 ?>
 <!-- wp:group {"align":"full","className":"gt-sec-faq","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"1180px"}} -->
